@@ -1,20 +1,23 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace Quicksort
 {
-    public partial class Form1 : Form
+    public partial class formQuickSort : Form
     {
-        public Form1()
+        public formQuickSort()
         {
             InitializeComponent();
+        }
+
+        private void btnSort_Click(object sender, EventArgs e)
+        {
+            tbSorted.Clear();
+            List<int> arrayToSort = tbUnsorted.Lines.Select(num => Int32.Parse(num)).ToList();
+            Sorting.Quicksort(arrayToSort, 0, arrayToSort.Count - 1);
+            arrayToSort.ForEach(num => tbSorted.AppendText($"{num}\n"));
         }
     }
 }
